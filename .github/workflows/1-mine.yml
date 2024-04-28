@@ -12,7 +12,6 @@ on:
 
 env:
   BUILD_NUMBER: ${{ github.run_number }}
-  CACHE_KEY: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
   TEST_COMMAND: 'npm test'
   DEPLOY_BRANCH: 'main'
 
