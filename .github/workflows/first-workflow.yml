@@ -19,6 +19,7 @@ jobs:
         run: sw_vers
 
   dependat-job:
+    timeout-minutes: 15
     runs-on: windows-latest
     needs: [run-shell-commands]
     steps:
