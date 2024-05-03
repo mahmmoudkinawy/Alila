@@ -7,3 +7,5 @@ jobs:
     steps:
       - name: Do sometrhing
         run: echo $GITHUB_REF
+      - name: log something
+        run: echo "Hello World"
