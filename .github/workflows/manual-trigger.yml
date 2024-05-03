@@ -1,11 +1,38 @@
 name: Manually Triggered
 on:
   workflow_dispatch:
+    inputs:
+      string:
+        description: 'A string input'
+        type: string
+        required: true
+        default: 'Default value'
+      option:
+        description: 'An options input'
+        type: choice
+        default: 'Option 3'
+        required: true
+        options:
+          - Option 1
+          - Option 2
+          - Option 3
+      boolean:
+        description: 'An boolean option'
+        type: boolean
+        default: false
+        required: true
+      environment:
+        description: 'environment'
+        type: environment
+        required: true
+
 jobs:
   log-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Do sometrhing
-        run: echo $GITHUB_REF
-      - name: log something
-        run: echo "Hello World"
+      - run: echo $GITHUB_REF
+      - run: |
+          echo "String: ${{ inputs.string}}"
+          echo "Boolean: ${{ inputs.boolean}}"
+          echo "Options: ${{ inputs.option}}"
+          echo "Enviroment: ${{ inputs.environment}}"
