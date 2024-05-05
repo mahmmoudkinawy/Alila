@@ -5,8 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Step 1
+        id: step-2
         run: sleep 20
-      - name: Fail
+      - name: Step 2
+        id: step-2
         run: exit 1
       - name: Runs on Failure
         if: failure()
