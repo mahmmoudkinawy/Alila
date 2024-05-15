@@ -2,6 +2,7 @@ name: Matrix
 on: [push]
 jobs:
   node-matrix:
+    continue-on-error: ${{ matrix.experimental == true }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -23,7 +24,6 @@ jobs:
             node-version: 14
       fail-fast: true
     runs-on: ${{ matrix.os }}
-    continue-on-error: false
     steps:
       - if: matrix.experimental == true
         run: exit 1
