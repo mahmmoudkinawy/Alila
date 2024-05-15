@@ -4,9 +4,23 @@ jobs:
   node-matrix:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, max]
+        os: [ubuntu-latest, windows-latest]
         node-version: [14, 15, 16]
+        include:
+          - os: ubuntu-latest
+            is-ubuntu: true
+          - os: macos-latest
+            node-version: 15
+          - experimental: false
+          - os: ubuntu-latest
+            node-version: 16
+            experimental: true
+          - os: ubuntu-latest
+            node-version: 17
         #   max-parallel: 3
+        exclude:
+          - os: ubuntu-latest
+            node-version: 14
       fail-fast: true
     runs-on: ${{ matrix.os }}
     continue-on-error: true
