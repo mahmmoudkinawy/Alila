@@ -4,9 +4,12 @@ jobs:
   node-matrix:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, max]
         node-version: [14, 15, 16]
+        #   max-parallel: 3
+      fail-fast: true
     runs-on: ${{ matrix.os }}
+    continue-on-error: true
     steps:
       - run: node -v
 
