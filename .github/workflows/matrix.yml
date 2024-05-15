@@ -27,6 +27,8 @@ jobs:
     steps:
       - run: node -v
 
+      - run: echo ${{ toJson(matrix) }}
+
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
