@@ -28,3 +28,10 @@ jobs:
                 Accept: 'text/plain'
             } });
             console.log(res.data);
+
+      - name: Use Kinawy Package
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const calc = require('kinawy-package');
+            console.log('res:', calc.add(5,5));
