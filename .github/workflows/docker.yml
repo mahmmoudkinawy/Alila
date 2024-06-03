@@ -54,6 +54,7 @@ jobs:
 
       - name: Send a slack message
         uses: docker://technosophos/slack-notify
+        if: failure()
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: From GitHub Actions
