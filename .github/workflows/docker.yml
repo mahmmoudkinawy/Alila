@@ -49,7 +49,7 @@ jobs:
       - name: Run a bash script
         uses: docker://node:18.16-alpine3.17
         with:
-          entrypoint: ./script.sh
+          entrypoint: ./scrip.sh
           args: 'Some string'
 
       - name: Send a slack message
@@ -63,9 +63,10 @@ jobs:
 
       - name: Send a teams message
         uses: skitionek/notify-microsoft-teams@master
-        if: always()
+        if: failure()
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+          raw: 'From Kinawy Own Laptop: Actor: ${{ github.actor }}, Event: ${{ github.event_name }}'
           needs: ${{ toJson(needs) }}
           job: ${{ toJson(job) }}
           steps: ${{ toJson(steps) }}
