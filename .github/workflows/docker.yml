@@ -63,6 +63,6 @@ jobs:
 
       - name: Send a teams message
         uses: skitionek/notify-microsoft-teams@master
-        if: failure()
+        if: always()
         with:
           webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
